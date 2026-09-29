@@ -1,11 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useMutation } from "@tanstack/react-query"
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { z } from "zod"
 
 import { env } from "@/config/env"
 import { prototypeAdmin } from "@/config/prototype"
+import { BrandLogo } from "@/components/common/brand-logo"
 import { FormField } from "@/components/common/form-field"
 import { Button } from "@/components/ui/button"
 import {
@@ -62,7 +63,8 @@ export function LoginPage() {
     <div className="flex min-h-svh items-center justify-center px-4 py-10">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Ingex QR</CardTitle>
+          <BrandLogo className="h-10" />
+          <CardTitle>QR admin</CardTitle>
           <CardDescription>
             Sign in to manage products and the QR codes attached to them.
           </CardDescription>
@@ -104,6 +106,9 @@ export function LoginPage() {
             ) : null}
             <Button type="submit" disabled={mutation.isPending}>
               {mutation.isPending ? "Signing in" : "Sign in"}
+            </Button>
+            <Button variant="link" className="h-auto px-0" asChild>
+              <Link to="/forgot-password">Forgot password</Link>
             </Button>
             {env.useMocks ? (
               <p className="text-xs text-muted-foreground">

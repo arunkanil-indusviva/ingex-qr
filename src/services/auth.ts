@@ -32,6 +32,13 @@ export async function getSession(): Promise<User | null> {
   }
 }
 
+export async function requestPasswordReset(email: string) {
+  const { data } = await api.post<{ message: string }>("/auth/forgot-password", {
+    email,
+  })
+  return data
+}
+
 export async function logout() {
   try {
     await api.post("/auth/logout")

@@ -12,10 +12,7 @@ export function buildDashboardSummary(): DashboardSummary {
     totalQrCodes: db.qrCodes.length,
     activeProducts: db.products.filter((product) => product.status === "active")
       .length,
-    totalScans: db.qrCodes.reduce(
-      (total, qrCode) => total + qrCode.totalScans,
-      0
-    ),
+    totalScans: db.scans.length,
     recentActivity: recentActivity.slice(0, 6),
   }
 }

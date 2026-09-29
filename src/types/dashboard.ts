@@ -2,6 +2,7 @@ export const activityKinds = [
   "product_added",
   "product_updated",
   "qr_generated",
+  "qr_deactivated",
   "qr_scanned",
 ] as const
 
@@ -12,6 +13,8 @@ export type Activity = {
   kind: ActivityKind
   summary: string
   occurredAt: string
+  productId?: string
+  qrId?: string
 }
 
 export type DashboardSummary = {

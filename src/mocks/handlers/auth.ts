@@ -37,4 +37,8 @@ export function registerAuthHandlers(mock: MockAdapter) {
   })
 
   mock.onPost("/auth/logout").reply(204)
+
+  mock.onPost("/auth/forgot-password").reply(() => {
+    return [200, { message: "If that email is registered, a reset link would be sent." }]
+  })
 }

@@ -12,3 +12,11 @@ export type User = {
   status: UserStatus
   createdAt: string
 }
+
+export type UserInput = {
+  name: string
+  email: string
+  role: UserRole
+  status: UserStatus
+  password: string
+}

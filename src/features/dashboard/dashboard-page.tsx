@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 import { Page, PageHeader } from "@/components/common/page"
 import { QueryState } from "@/components/common/query-state"
 import { StatCard } from "@/components/common/stat-card"
@@ -62,7 +64,19 @@ function ActivityTable({ activity }: { activity: Activity[] }) {
             <TableCell>
               <Badge variant="outline">{formatActivityKind(item.kind)}</Badge>
             </TableCell>
-            <TableCell>{item.summary}</TableCell>
+            <TableCell>
+              {item.qrId ? (
+                <Link className="underline-offset-4 hover:underline" to={`/qr-codes/${item.qrId}`}>
+                  {item.summary}
+                </Link>
+              ) : item.productId ? (
+                <Link className="underline-offset-4 hover:underline" to={`/products/${item.productId}`}>
+                  {item.summary}
+                </Link>
+              ) : (
+                item.summary
+              )}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -77,7 +91,7 @@ export function DashboardPage() {
     <Page>
       <PageHeader
         title="Dashboard"
-        description="A snapshot of the catalogue. These figures come from sample data until the API is connected."
+        description="Products, QR codes, and scan activity."
       />
       <QueryState query={query} skeleton={<DashboardSkeleton />}>
         {(summary) => (

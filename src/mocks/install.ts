@@ -3,6 +3,7 @@ import MockAdapter from "axios-mock-adapter"
 import { env } from "@/config/env"
 import { api } from "@/lib/axios"
 import { registerAuthHandlers } from "@/mocks/handlers/auth"
+import { registerCatalogHandlers } from "@/mocks/handlers/catalog"
 import { registerDashboardHandlers } from "@/mocks/handlers/dashboard"
 
 export function installMocks() {
@@ -17,4 +18,5 @@ export function installMocks() {
 
   registerAuthHandlers(mock)
   registerDashboardHandlers(mock)
+  registerCatalogHandlers(mock)
 }

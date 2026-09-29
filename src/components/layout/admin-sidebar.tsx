@@ -3,6 +3,7 @@ import { Link, useMatch, useNavigate } from "react-router-dom"
 import { useQueryClient } from "@tanstack/react-query"
 import { LogOutIcon } from "lucide-react"
 
+import { BrandLogo } from "@/components/common/brand-logo"
 import { adminNav, type AdminNavItem } from "@/config/navigation"
 import { useSession } from "@/features/auth/use-session"
 import { formatRole, initials } from "@/lib/format"
@@ -70,9 +71,9 @@ export function AdminSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="gap-0 px-3 py-3">
-        <div className="flex flex-col group-data-[collapsible=icon]:hidden">
-          <span className="text-sm font-medium">Ingex</span>
+      <SidebarHeader className="px-3 py-3">
+        <div className="flex flex-col gap-2 group-data-[collapsible=icon]:hidden">
+          <BrandLogo />
           <span className="text-xs text-muted-foreground">QR admin</span>
         </div>
       </SidebarHeader>
